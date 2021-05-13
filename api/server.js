@@ -13,7 +13,7 @@ const requestsRouter = require("./requests/requests-router");
 const server = express();
 
 server.use(express.json());
-server.use(helmet());
+server.use(helmet({ contentSecurityPolicy: false }));
 server.use(cors());
 
 server.use("/api/auth", authRouter);
