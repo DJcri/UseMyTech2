@@ -20,7 +20,7 @@ module.exports = {
       port: 5432,
       user: "postgres",
       password: "postgres",
-      database: "UseMyTech",
+      database: "UseMyTech2",
     },
     pool: {
       min: 2,
