@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom";
+import { useState } from "react";
+import "./App.css";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import Auth from "./components/Auth";
+import Browse from "./components/Browse";
+import PrivateRoute from "./components/PrivateRoute";
+import MyEquipment from "./components/MyEquipment";
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [role, setRole] = useState(localStorage.getItem("role"));
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav token={token} setToken={setToken} setRole={setRole} />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/browse">
+          <Browse role={role} />
+        </Route>
+        <PrivateRoute path="/myequipment" component={MyEquipment} />
+        <Route path="/login">
+          <Auth setToken={setToken} setRole={setRole} />
+        </Route>
+      </Switch>
     </div>
   );
 }
