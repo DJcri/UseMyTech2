@@ -1,4 +1,4 @@
-# Use My Tech (Rework)
+# Use My Tech (Reworked)
 
 ### Summary
 An app that allows users to rent and sell equipment.
